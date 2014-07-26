@@ -7,11 +7,31 @@
 //
 
 #import "AppDelegate.h"
+#import "SlideNavigationController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
+															 bundle: nil];
+
+	LeftMenuController *leftMenu = (LeftMenuController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"LeftSlideOutViewController"];
+
+//	RightMenuViewController *rightMenu = (RightMenuViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"RightMenuViewController"];
+
+//	[SlideNavigationController sharedInstance].rightMenu = rightMenu;
+	[SlideNavigationController sharedInstance].leftMenu = leftMenu;
+
+    /*
+	// Creating a custom bar button for right menu
+	UIButton *button  = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+	[button setImage:[UIImage imageNamed:@"gear"] forState:UIControlStateNormal];
+	[button addTarget:[SlideNavigationController sharedInstance] action:@selector(toggleRightMenu) forControlEvents:UIControlEventTouchUpInside];
+	UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+	[SlideNavigationController sharedInstance].rightBarButtonItem = rightBarButtonItem;
+	*/
+	
     // Override point for customization after application launch.
     return YES;
 }
